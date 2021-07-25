@@ -1,0 +1,9 @@
+
+Hi all, can anyone give a definition stating difference between data, datum and redeemer
+
+To spend an UTxO from a script address, the Validator must return True. The Validator is a pure function that requires three arguments, Datum, Redeemer, and ScriptContext. All three have a Data type, which is comparable to JSON. The difference between those three is the entity that defines the argument to the Validator.
+
+The creator of an UTxO defines the Datum.
+The spender of an UTxO defines the Redeemer.
+The validating node defines the ScriptContext.
+

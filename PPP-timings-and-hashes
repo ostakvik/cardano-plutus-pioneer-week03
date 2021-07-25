@@ -1,0 +1,36 @@
+How to find the Public key of a Wallet (in case they are not always not static):
+=============================================
+From NIX-Shell in .../week03 (? What about weeok 04 then...?)
+[nix-shell:~/projects/git/plutus/ppp2/plutus-pioneer-program/code/week03]$ cabal repl
+[nix-shell:~/projects/git/plutus/ppp2/plutus-pioneer-program/code/week03]$:l src/Week03/vesting.hs
+[nix-shell:~/projects/git/plutus/ppp2/plutus-pioneer-program/code/week03]$import ledger
+[nix-shell:~/projects/git/plutus/ppp2/plutus-pioneer-program/code/week03]$import Wallet.Emulator
+
+Prelude Ledger Wallet.Emulator Week03.Vesting> pubKeyHash $ walletPubKey $ Wallet 2
+39f713d0a644253f04529421b9f51b9b08979d08295959c4f3990ee617f5139f
+
+Prelude Ledger Wallet.Emulator Week03.Vesting> pubKeyHash $ walletPubKey $ Wallet 3
+dac073e0123bdea59dd9b3bda9cf6037f63aca82627d7abcd5c4ac29dd74003e
+
+Prelude Ledger Wallet.Emulator Week03.Vesting> pubKeyHash $ walletPubKey $ Wallet 1
+21fe31dfa154a261626bf854046fd2271b7bed4b6abe45aa58877ef47f9721b9
+
+Prelude Ledger Wallet.Emulator Week03.Vesting> pubKeyHash $ walletPubKey $ Wallet 4
+edd1c37372f752c97aec0882452facac17a4fdaf46e61c033f4af678a4079bcd
+
+
+--------------------
+
+Default POSIXTime : getPOSIXTime = 1596059091000
+
+Prelude Ledger Wallet.Emulator Ledger.TimeSlot Data.Default Week03.Vesting> slotToBeginPOSIXTime def 10
+POSIXTime {getPOSIXTime = 1596059101000}
+
+
+Prelude Ledger Wallet.Emulator Ledger.TimeSlot Data.Default Week03.Vesting> slotToBeginPOSIXTime def 20
+POSIXTime {getPOSIXTime = 1596059111000}
+
+
+Prelude Ledger Wallet.Emulator Ledger.TimeSlot Data.Default Week03.Vesting> slotToBeginPOSIXTime def 30
+POSIXTime {getPOSIXTime = 1596059121000}
+
