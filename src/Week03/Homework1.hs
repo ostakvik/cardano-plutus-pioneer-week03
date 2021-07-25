@@ -47,13 +47,13 @@ PlutusTx.unstableMakeIsData ''VestingDatum
 -- or if beneficiary2 has signed the transaction and the deadline has passed.
 mkValidator :: VestingDatum -> () -> ScriptContext -> Bool
 mkValidator dat () ctx =
-    if (signedByBeneficiary $ beneficiary1 dat) then True
+    if ( (signedByBeneficiary $ beneficiary1 dat) && not deadlineReached) then True
     else False
     {-
     if ( (signedByBeneficiary $ beneficiary1 dat ) && deadlineReached == False) then True
     else if ( (signedByBeneficiary $ beneficiary2 dat ) && deadlineReached == True)  then True
     else False-}
-    
+
     where
       info :: TxInfo
       info = scriptContextTxInfo ctx
