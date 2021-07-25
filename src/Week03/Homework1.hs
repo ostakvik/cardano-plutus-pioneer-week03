@@ -48,11 +48,13 @@ PlutusTx.unstableMakeIsData ''VestingDatum
 mkValidator :: VestingDatum -> () -> ScriptContext -> Bool
 mkValidator dat () ctx =
     if ( (signedByBeneficiary $ beneficiary1 dat) && not deadlineReached) then True
+    else if ((signedByBeneficiary $ beneficiary2 dat) &&  deadlineReached) then True
     else False
     {-
     if ( (signedByBeneficiary $ beneficiary1 dat ) && deadlineReached == False) then True
     else if ( (signedByBeneficiary $ beneficiary2 dat ) && deadlineReached == True)  then True
-    else False-}
+    else False
+    -}
 
     where
       info :: TxInfo
