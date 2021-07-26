@@ -11,9 +11,9 @@ Gifts to wallet3 should only be allowed to grab (by wallet3) after the deadline.
 My first understanding of the task was that we only should change the on-chain validator. The solution seemed to be pretty straight forward.
 My solution included changing the signature of the "signedByBeneficiary" method allowing it to check for arbitrary pubkeyHashes.
 However, the wallet3 was never able to grab any gifts.
-So, I had to reduce the validator code to itæs most simple form and build it up from there. This to get a better understanding of what happened and where the bug was.
+So, I had to reduce the validator code to it's most simple form and build it up from there. This to get a better understanding of what happened and where the bug was.
 Each of these steps has it's own commit (listed and commented below).
-After some steps, and looking more deeply into the logs, i fifures out the the Wallet3's 'grab' transaction was never sent to the blockchain,
+After some steps, and looking more deeply into the logs, i figured out the the Wallet3's 'grab' transaction was never sent to the blockchain,
 hence the on-chain validator was never executed. Then I started to look at the 'off-chain'code.
 This was an important code line in the 'grab' function:
 
@@ -27,7 +27,7 @@ Validation of-chain should be similar to the validations on-chain.
 
 I had to change the given of-chain validation code line, by removing the check for deadline passed or not.
 I know that the validation is now a bit different between on-chain and off-chain.
- I have to admit that I don't understand the  next validation line in the of-chain code:
+I have to admit that I don't understand the  next validation line in the of-chain code:
 
  utxos2 = Map.filter (isSuitable $ \dat -> beneficiary2 dat == pkh && now >  deadline dat) utxos
 
