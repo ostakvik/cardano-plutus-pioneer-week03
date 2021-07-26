@@ -53,8 +53,7 @@ mkValidator dat () ctx =
     {-
     if ( (signedByBeneficiary $ beneficiary1 dat ) && deadlineReached == False) then True
     else if ( (signedByBeneficiary $ beneficiary2 dat ) && deadlineReached == True)  then True
-    else False
-    -}
+    else False-}
 
     where
       info :: TxInfo
@@ -120,7 +119,8 @@ grab = do
     now    <- currentTime
     pkh    <- pubKeyHash <$> ownPubKey
     utxos  <- utxoAt scrAddress
-    let utxos1 = Map.filter (isSuitable $ \dat -> beneficiary1 dat == pkh && now <= deadline dat) utxos
+    --let utxos1 = Map.filter (isSuitable $ \dat -> beneficiary1 dat == pkh && now <= deadline dat) utxos
+    let utxos1 = Map.filter (isSuitable $ \dat -> beneficiary1 dat == pkh) utxos
         utxos2 = Map.filter (isSuitable $ \dat -> beneficiary2 dat == pkh && now >  deadline dat) utxos
     logInfo @P.String $ printf "found %d gift(s) to grab" (Map.size utxos1 P.+ Map.size utxos2)
     unless (Map.null utxos1) $ do
