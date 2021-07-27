@@ -1,7 +1,6 @@
 # cardano-plutus-pioneer-week03
-Homework for the Cardano plutus pioneer program
+##Homework for the Cardano plutus pioneer program
 
-There was given 2 homeworks.
 Homework #1.
 -----------------------------------------------
 When wallet1 give "gifts" to wallet1 and wallet2 (including a deadLine):
@@ -35,3 +34,14 @@ I have to admit that I don't understand the  next validation line in the of-chai
  It has nothing to do with the beneficiary specified in the "give" wallet, which always ends up as 'beneficiary1' in the 'grab' code.
 
  Would be nice to discuss this with someone :-)
+ 
+ The 3 changes that are important:
+ 1. [BF1 allowed to grab all gifts, not care about deadline] https://github.com/ostakvik/cardano-plutus-pioneer-week03/commit/459f74bf7aa65e16ca5be27724d4368bf69c900a#diff-57bfcd8ef1fef27018f8b4881e2594b0f9f659421303fc0b54be30219c24df6e0a
+ 2. BF1 allow to grab gift if deadline not reached]  https://github.com/ostakvik/cardano-plutus-pioneer-week03/commit/4f02531570355b62adb43c284bd86551da0efd87#diff-57bfcd8ef1fef27018f8b4881e2594b0f9f659421303fc0b54be30219c24df6e
+ 3. [BF2 allowed to grab if deadline has passed]https://github.com/ostakvik/cardano-plutus-pioneer-week03/commit/2b3fb2a1f241768b4c7d034c7a87b59237e9655d#diff-57bfcd8ef1fef27018f8b4881e2594b0f9f659421303fc0b54be30219c24df6e
+
+
+
+
+ 
+ 
