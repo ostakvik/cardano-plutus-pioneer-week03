@@ -1,5 +1,5 @@
 # cardano-plutus-pioneer-week03
-##Homework for the Cardano plutus pioneer program
+## Homework for the Cardano plutus pioneer program
 
 Homework #1.
 -----------------------------------------------
